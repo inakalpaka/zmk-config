@@ -1,49 +1,45 @@
-on: [push, pull_request, workflow_dispatch]
+name: Build Firmware
 
-name: Build
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: zmkfirmware/zmk-build-arm:2.5
-    name: Build
+    strategy:
+      matrix:
+        include:
+          - board: your_keeb
+            shield: your_keeb_left
+            shield_title: your_keeb
+            artifact_title: your_keeb_left
+            features: split ble
+
+          - board: your_keeb
+            shield: your_keeb_right  
+            shield_title: your_keeb
+            artifact_title: your_keeb_right
+            features: split ble
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cache west modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-zephyr-modules
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Firmware
+        uses: zmkfirmware/zmk-build-action@v0.4.0
         with:
-          path: |
-            modules/
-            tools/
-            zephyr/
-            bootloader/
-            zmk/
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('manifest-dir/west.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: West Init
-        run: west init -l config
-      - name: West Update
-        run: west update
-      - name: West Zephyr export
-        run: west zephyr-export
-      - name: West Build (KEYBOARD_TITLE)
-        run: west build -s zmk/app -b BOARD_NAME -- -DSHIELD=SHIELD_NAME -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: KEYBOARD_TITLE DTS File
-        if: ${{ always() }}
-        run: cat -n build/zephyr/BOARD_NAME.dts.pre.tmp
-      - name: KEYBOARD_TITLE Kconfig file
-        run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
-      - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 SHIELD_NAME_BOARD_NAME.uf2
-      - name: Archive (KEYBOARD_TITLE)
-        uses: actions/upload-artifact@v2
+          board: ${{ matrix.board }}
+          shield: ${{ matrix.shield }}
+          shield_title: ${{ matrix.shield_title }}
+          features: ${{ matrix.features }}
+
+      - name: Archive Firmware
+        uses: actions/upload-artifact@v4
         with:
-          name: firmware
-          path: SHIELD_NAME_BOARD_NAME.uf2
+          name: ${{ matrix.artifact_title }}
+          path: firmware/*.uf2
+
