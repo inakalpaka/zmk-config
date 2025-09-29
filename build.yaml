@@ -1,0 +1,20 @@
+# This file generates the GitHub Actions matrix
+# For more details see:
+# https://zmk.dev/docs/development/build-flags#build-matrix
+
+include:
+  - board: your_keeb
+    shield: your_keeb_left
+    shield_title: your_keeb
+    artifact_title: your_keeb_left
+    features:
+      - split
+      - ble
+
+  - board: your_keeb  
+    shield: your_keeb_right
+    shield_title: your_keeb
+    artifact_title: your_keeb_right
+    features:
+      - split
+      - ble
