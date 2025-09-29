@@ -15,31 +15,27 @@ jobs:
         include:
           - board: your_keeb
             shield: your_keeb_left
-            shield_title: your_keeb
             artifact_title: your_keeb_left
-            features: split ble
 
           - board: your_keeb
             shield: your_keeb_right  
-            shield_title: your_keeb
             artifact_title: your_keeb_right
-            features: split ble
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
 
-      - name: Build Firmware
-        uses: zmkfirmware/zmk-build-action@v0.4.0
-        with:
-          board: ${{ matrix.board }}
-          shield: ${{ matrix.shield }}
-          shield_title: ${{ matrix.shield_title }}
-          features: ${{ matrix.features }}
+    - name: Build
+      run: |
+        docker run --rm -v $PWD:/workspace \
+          -e BOARD=${{ matrix.board }} \
+          -e SHIELD=${{ matrix.shield }} \
+          zmkfirmware/zmk-build-arm:3.2
 
-      - name: Archive Firmware
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.artifact_title }}
-          path: firmware/*.uf2
-
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.artifact_title }}
+        path: firmware/*.uf2
