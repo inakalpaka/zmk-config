@@ -1,8 +1,41 @@
-include:
-  - board: your_keeb
-    shield: your_keeb_left
-    shield_title: your_keeb
+name: Build Firmware
 
-  - board: your_keeb  
-    shield: your_keeb_right
-    shield_title: your_keeb
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - board: your_keeb
+            shield: your_keeb_left
+            artifact_title: your_keeb_left
+
+          - board: your_keeb
+            shield: your_keeb_right  
+            artifact_title: your_keeb_right
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Build
+      run: |
+        docker run --rm -v $PWD:/workspace \
+          -e BOARD=${{ matrix.board }} \
+          -e SHIELD=${{ matrix.shield }} \
+          zmkfirmware/zmk-build-arm:3.2
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.artifact_title }}
+        path: firmware/*.uf2
