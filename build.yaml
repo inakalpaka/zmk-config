@@ -21,11 +21,11 @@
 include:
   - board: nice_nano@2.0.0
     shield: corne_left
-    # Configura esta mitad como CENTRAL (Master)
+    # Rol Central (MASTER) - Definición explícita
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
     artifact-name: corne_left_central
   - board: nice_nano@2.0.0
     shield: corne_right
-    # Configura esta mitad como PERIFÉRICA (Slave)
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_PERIPHERAL=y
+    # Rol Periférico (SLAVE) - DEJAMOS QUE ZMK LO DEDUZCA
+    # Eliminamos 'cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_PERIPHERAL=y'
     artifact-name: corne_right_peripheral
