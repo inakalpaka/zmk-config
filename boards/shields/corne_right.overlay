@@ -1,24 +1,23 @@
 // boards/shields/corne_right.overlay
 
 &kscan0 {
-    // 1. Redefinir el tamaño de la matriz a 3 filas y 7 columnas
+    // Definimos el tamaño de la matriz como 3 filas y 7 columnas
     rows = <3>;
     columns = <7>;
 
-    // 2. Definición de Filas (Rows): F0, F1, F2 (De arriba a abajo)
-    // Pines: 1 13, 1 11, 0 10
-    row-gpios = <&gpio 1 13 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0
-                <&gpio 1 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1
-                <&gpio 0 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2
+    // Definición de Filas (Rows): Pines de Fila y ¡PULL UP!
+    // F0, F1, F2: 1 13, 1 11, 0 10
+    row-gpios = <&gpio 1 13 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>, // F0
+                <&gpio 1 11 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>, // F1
+                <&gpio 0 10 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;  // F2
 
-    // 3. Definición de Columnas (Cols): C0 a C6 (De izquierda a derecha, C6 es el pulgar)
-    // Pines: 1 6, 0 20, 0 22, 0 31, 0 29, 0 2, 0 9
-    col-gpios = <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C0
-                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C1
-                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C2
-                <&gpio 0 31 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3
-                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4
-                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C5
-                <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Pulgar)
+    // Definición de Columnas (Cols): Pines de Columna y ¡PULL DOWN!
+    // C0 a C6: 1 6, 0 20, 0 22, 0 31, 0 29, 0 2, 0 9
+    col-gpios = <&gpio 1 6 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>,  // C0
+                <&gpio 0 20 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>, // C1
+                <&gpio 0 22 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>, // C2
+                <&gpio 0 31 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>, // C3
+                <&gpio 0 29 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>, // C4
+                <&gpio 0 2 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>,  // C5
+                <&gpio 0 9 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>;  // C6 (Pulgar)
 };
-
