@@ -1,17 +1,23 @@
 // boards/shields/corne_left.overlay
-// ... (mismas listas de pines)
+// Retorna a Polaridad Estándar (Row2Col)
 
-    // FILAS (Rows): AHORA COMO OUTPUT (PULL_UP | ACTIVE_LOW)
-    row-gpios = <&gpio 0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // F0 (P0.10)
-                <&gpio 0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // F1 (P0.11)
-                <&gpio 1 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;   // F2 (P1.04)
+&kscan0 {
+    rows = <3>;
+    columns = <7>;
 
-    // COLUMNAS (Cols): AHORA COMO INPUT (PULL_DOWN | ACTIVE_HIGH)
-    col-gpios = <&gpio 0 9 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 29 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 2 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 17 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 20 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 22 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 1 6 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+    // FILAS (Rows): Polaridad ESTÁNDAR + Pin F0 MANTENIDO en P0.10
+    row-gpios = <&gpio 0 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 (P0.10)
+                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 (P0.11)
+                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 (P1.04)
+
+    // COLUMNAS (Cols): Polaridad ESTÁNDAR + ROTACIÓN DE PINES
+    // Orden original: 0 9, 0 29, 0 2, 0 17, 0 20, 0 22, 1 6
+    // Nuevo orden (Rotado): 0 29, 0 2, 0 17, 0 20, 0 22, 1 6, 0 9
+    col-gpios = <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C0 (Antes C1)
+                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C1 (Antes C2)
+                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C2 (Antes C3)
+                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3 (Antes C4)
+                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4 (Antes C5)
+                <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C5 (Antes C6)
+                <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Ahora P0.09, antes C0)
 };
