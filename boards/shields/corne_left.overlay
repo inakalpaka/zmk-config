@@ -5,9 +5,9 @@
     columns = <7>;
 
     // FILAS (Rows): INTERCAMBIO F0/F1 para sacar el pin 0 24 de la posición de escaneo crítica.
-    row-gpios = <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 (¡NUEVA F0, antes P0.11!)
-                <&gpio 0 24 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 (Ahora P0.24, antes F0)
-                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 (P1.04)
+    row-gpios = <&gpio 0 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 
+                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 
+                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 
 
     // COLUMNAS (Cols): MANTENEMOS TU ORDEN ORIGINAL, pero si no funciona, lo invertimos.
     col-gpios = <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
