@@ -1,16 +1,23 @@
-&kscan0 {
-    // Definición de Filas (Rows): F0, F1, F2, F3 (Pulgar)
-    row-gpios = <&gpio 0 24 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                // ESTA ES LA FILA DEL PULGAR (F3). POR FAVOR, REEMPLAZA ESTE PIN CON EL REAL.
-                <&gpio 0 3 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+// boards/shields/corne_left.overlay
 
-    // Definición de Columnas (Cols): C0 a C5 (izquierda a derecha)
-    col-gpios = <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+&kscan0 {
+    // 1. Redefinir el tamaño de la matriz a 3 filas y 7 columnas
+    rows = <3>;
+    columns = <7>;
+
+    // 2. Definición de Filas (Rows): F0, F1, F2 (De arriba a abajo)
+    // Pines: Fila de arriba (0 24), Fila del medio (0 11), Fila de abajo (1 4)
+    row-gpios = <&gpio 0 24 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 (QWERTY)
+                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 (ASDF)
+                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 (ZXCV)
+
+    // 3. Definición de Columnas (Cols): C0 a C6 (De izquierda a derecha, C6 es el pulgar)
+    // Pines: 0 9, 0 29, 0 2, 0 17, 0 20, 0 22, 1 6
+    col-gpios = <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C0
+                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C1
+                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C2
+                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3
+                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4
+                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C5
+                <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Pulgar)
 };
