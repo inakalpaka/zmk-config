@@ -7,60 +7,22 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "Default Layer";
+            display-name = "Base Test Layer";
             bindings = <
 // -------------------- MITAD IZQUIERDA (3x7) --------------------------------
 // F0 C0-C5 + C6(Pulgar)
-    &kp TAB    &kp Q &kp W &kp E &kp R &kp T &kp LGUI     // FILA 0: TAB Q W E R T + LGUI
+    &kp TAB    &kp Q &kp W &kp E &kp R &kp T &kp LALT   // FILA 0: Teclas estándar
 // F1 C0-C5 + C6(Pulgar)
-    &kp LCTRL &kp A &kp S &kp D &kp F &kp G &mo 1        // FILA 1: LCTRL A S D F G + LWR (mo 1)
+    &kp LCTRL &kp A &kp S &kp D &kp F &kp G &kp SEMI   // FILA 1: Teclas estándar
 // F2 C0-C5 + C6(Pulgar)
-    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp SPACE    // FILA 2: LSHFT Z X C V B + SPACE
+    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp SPACE  // FILA 2: Teclas estándar
 // -------------------- MITAD DERECHA (3x7) ---------------------------------
 // F0 C0-C5 + C6(Pulgar)
-    &kp Y &kp U  &kp I      &kp O    &kp P    &kp BSPC &kp RET // FILA 0: Y U I O P BSPC + RET
+    &kp Y &kp U  &kp I      &kp O     &kp P    &kp BSPC &kp RET // FILA 0: Teclas estándar
 // F1 C0-C5 + C6(Pulgar)
-    &kp H &kp J  &kp K      &kp L    &kp SEMI &kp SQT  &mo 2 // FILA 1: H J K L ; ' + RSE (mo 2)
+    &kp H &kp J  &kp K      &kp L     &kp SEMI &kp SQT  &kp RALT // FILA 1: Teclas estándar
 // F2 C0-C5 + C6(Pulgar)
-    &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC &kp RALT // FILA 2: N M , . / ESC + RALT
-            >;
-        };
-        lower_layer {
-            display-name = "Lower Layer";
-            bindings = <
-// -------------------- MITAD IZQUIERDA (3x7) --------------------------------
-// F0 C0-C5 + C6(Pulgar)
-    &kp TAB    &kp N1        &kp N2        &kp N3        &kp N4        &kp N5        &kp LGUI // F0: TAB 1 2 3 4 5 + LGUI
-// F1 C0-C5 + C6(Pulgar)
-    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans // F1: BTCLR BT_SEL 0-4 + trans
-// F2 C0-C5 + C6(Pulgar)
-    &kp LSHFT  &trans        &trans        &trans        &trans        &trans        &kp SPACE // F2: LSHFT + trans + SPACE
-// -------------------- MITAD DERECHA (3x7) ---------------------------------
-// F0 C0-C5 + C6(Pulgar)
-    &kp N6    &kp N7    &kp N8 &kp N9     &kp N0 &kp BSPC &kp RET // F0: 6 7 8 9 0 BSPC + RET
-// F1 C0-C5 + C6(Pulgar)
-    &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans &trans // F1: LFT DWN UP RGT + trans
-// F2 C0-C5 + C6(Pulgar)
-    &trans    &trans    &trans &trans     &trans &trans &kp RALT // F2: trans + RALT
-            >;
-        };
-        raise_layer {
-            display-name = "Raise Layer";
-            bindings = <
-// -------------------- MITAD IZQUIERDA (3x7) --------------------------------
-// F0 C0-C5 + C6(Pulgar)
-    &kp TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp LGUI // F0: TAB ! @ # $ % + LGUI
-// F1 C0-C5 + C6(Pulgar)
-    &kp LCTRL &trans    &trans &trans    &trans    &trans    &trans // F1: LCTRL + trans
-// F2 C0-C5 + C6(Pulgar)
-    &kp LSHFT &trans    &trans &trans    &trans    &trans    &kp SPACE // F2: LSHFT + trans + SPACE
-// -------------------- MITAD DERECHA (3x7) ---------------------------------
-// F0 C0-C5 + C6(Pulgar)
-    &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC &kp RET // F0: ^ & * ( ) BSPC + RET
-// F1 C0-C5 + C6(Pulgar)
-    &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE &trans // F1: - = [ ] \ ` + trans
-// F2 C0-C5 + C6(Pulgar)
-    &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE &kp RALT // F2: _ + { } | ~ + RALT
+    &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC &kp RGUI // FILA 2: Teclas estándar
             >;
         };
     };
