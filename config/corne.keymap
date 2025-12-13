@@ -11,7 +11,7 @@
             bindings = <
 // -------------------- MITAD IZQUIERDA (3x7) --------------------------------
 // F0 C0-C5 + C6(Pulgar)
-    &kp TAB    &kp A &kp A &kp A &kp A &kp A &kp A   // FILA 0: TAB, A, A, A, A, A, A
+    &kp A    &kp A &kp A &kp A &kp A &kp A &kp A   // FILA 0: A, A, A, A, A, A, A
 // F1 C0-C5 + C6(Pulgar)
     &kp A &kp A &kp A &kp A &kp A &kp A &kp A       // FILA 1: A, A, A, A, A, A, A
 // F2 C0-C5 + C6(Pulgar)
