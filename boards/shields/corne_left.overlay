@@ -1,23 +1,20 @@
 // boards/shields/corne_left.overlay
 
 &kscan0 {
-    // Definimos el tamaño de la matriz como 3 filas y 7 columnas
     rows = <3>;
     columns = <7>;
 
-    // Definición de Filas (Rows): Row2Col estándar (PULL DOWN)
-    // F0, F1, F2: 0 24, 0 11, 1 4
-    row-gpios = <&gpio 0 24 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0
-                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1
-                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2
+    // FILAS (Rows): INTERCAMBIO F0/F1 para sacar el pin 0 24 de la posición de escaneo crítica.
+    row-gpios = <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 (¡NUEVA F0, antes P0.11!)
+                <&gpio 0 24 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 (Ahora P0.24, antes F0)
+                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 (P1.04)
 
-    // Definición de Columnas (Cols): Row2Col estándar (PULL UP)
-    // C0 a C6: 0 9, 0 29, 0 2, 0 17, 0 20, 0 22, 1 6
-    col-gpios = <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C0
-                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C1
-                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C2
-                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3
-                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4
-                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C5
-                <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Pulgar)
+    // COLUMNAS (Cols): MANTENEMOS TU ORDEN ORIGINAL, pero si no funciona, lo invertimos.
+    col-gpios = <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 };
