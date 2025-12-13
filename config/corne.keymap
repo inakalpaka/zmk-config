@@ -7,22 +7,22 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "Base Test Layer";
+            display-name = "Matrix Test (All A)";
             bindings = <
 // -------------------- MITAD IZQUIERDA (3x7) --------------------------------
 // F0 C0-C5 + C6(Pulgar)
-    &kp TAB    &kp Q &kp W &kp E &kp R &kp T &kp LALT   // FILA 0: Teclas estándar
+    &kp TAB    &kp A &kp A &kp A &kp A &kp A &kp A   // FILA 0: TAB, A, A, A, A, A, A
 // F1 C0-C5 + C6(Pulgar)
-    &kp LCTRL &kp A &kp S &kp D &kp F &kp G &kp SEMI   // FILA 1: Teclas estándar
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A       // FILA 1: A, A, A, A, A, A, A
 // F2 C0-C5 + C6(Pulgar)
-    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp SPACE  // FILA 2: Teclas estándar
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A       // FILA 2: A, A, A, A, A, A, A
 // -------------------- MITAD DERECHA (3x7) ---------------------------------
 // F0 C0-C5 + C6(Pulgar)
-    &kp Y &kp U  &kp I      &kp O     &kp P    &kp BSPC &kp RET // FILA 0: Teclas estándar
+    &kp A &kp A  &kp A      &kp A     &kp A    &kp A &kp A // FILA 0: A, A, A, A, A, A, A
 // F1 C0-C5 + C6(Pulgar)
-    &kp H &kp J  &kp K      &kp L     &kp SEMI &kp SQT  &kp RALT // FILA 1: Teclas estándar
+    &kp A &kp A  &kp A      &kp A     &kp A    &kp A &kp A // FILA 1: A, A, A, A, A, A, A
 // F2 C0-C5 + C6(Pulgar)
-    &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC &kp RGUI // FILA 2: Teclas estándar
+    &kp A &kp A  &kp A &kp A &kp A &kp A &kp A // FILA 2: A, A, A, A, A, A, A
             >;
         };
     };
