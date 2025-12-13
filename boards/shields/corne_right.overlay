@@ -1,18 +1,16 @@
-// Definición de GPIOs para la mitad derecha (corne_right)
 &kscan0 {
-    // Definición de los pines GPIO para las filas (Row-Gpios)
-    // F1, F2, F3
-    row-gpios = <&gpio 1 0 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 0 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
-                <&gpio 1 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
+    // Definición de Filas (Rows): F0, F1, F2, F3 (Pulgar)
+    row-gpios = <&gpio 1 13 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
+                <&gpio 1 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
+                <&gpio 0 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>,
+                // ESTA ES LA FILA DEL PULGAR (F3). POR FAVOR, REEMPLAZA ESTE PIN CON EL REAL.
+                <&gpio 0 3 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;
 
-    // Definición de los pines GPIO para las columnas (Col-Gpios)
-    // C1, C2, C3, C4, C5, C6, C7
-    col-gpios = <&gpio 0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+    // Definición de Columnas (Cols): C0 a C5 (izquierda a derecha)
+    col-gpios = <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
                 <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
                 <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                <&gpio 0 31 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 };
