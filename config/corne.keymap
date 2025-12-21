@@ -1,0 +1,29 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Matrix Test (All A)";
+            bindings = <
+// -------------------- MITAD IZQUIERDA (3x7) --------------------------------
+// F0 C0-C5 + C6(Pulgar)
+    &kp A    &kp A &kp A &kp A &kp A &kp A &kp A   // FILA 0: A, A, A, A, A, A, A
+// F1 C0-C5 + C6(Pulgar)
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A       // FILA 1: A, A, A, A, A, A, A
+// F2 C0-C5 + C6(Pulgar)
+    &kp A &kp A &kp A &kp A &kp A &kp A &kp A       // FILA 2: A, A, A, A, A, A, A
+// -------------------- MITAD DERECHA (3x7) ---------------------------------
+// F0 C0-C5 + C6(Pulgar)
+    &kp A &kp A  &kp A      &kp A     &kp A    &kp A &kp A // FILA 0: A, A, A, A, A, A, A
+// F1 C0-C5 + C6(Pulgar)
+    &kp A &kp A  &kp A      &kp A     &kp A    &kp A &kp A // FILA 1: A, A, A, A, A, A, A
+// F2 C0-C5 + C6(Pulgar)
+    &kp A &kp A  &kp A &kp A &kp A &kp A &kp A // FILA 2: A, A, A, A, A, A, A
+            >;
+        };
+    };
+};
