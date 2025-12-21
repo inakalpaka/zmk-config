@@ -1,23 +1,20 @@
 // boards/shields/corne_right.overlay
+#include "corne.dtsi"
+
+&default_transform {
+    col-offset = <6>;  
+};
 
 &kscan0 {
-    // Definimos el tamaño de la matriz como 3 filas y 7 columnas
-    rows = <3>;
-    columns = <7>;
+    row-gpios = <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio1 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
-    // Definición de Filas (Rows): Row2Col estándar (PULL DOWN)
-    // F0, F1, F2: 1 13, 1 11, 0 10
-    row-gpios = <&gpio 1 13 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0
-                <&gpio 1 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1
-                <&gpio 0 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2
-
-    // Definición de Columnas (Cols): Row2Col estándar (PULL UP)
-    // C0 a C6: 1 6, 0 20, 0 22, 0 31, 0 29, 0 2, 0 9
-    col-gpios = <&gpio 1 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C0
-                <&gpio 0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C1
-                <&gpio 0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C2
-                <&gpio 0 31 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3
-                <&gpio 0 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4
-                <&gpio 0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C5
-                <&gpio 0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Pulgar)
+    col-gpios = <&gpio1 29 GPIO_ACTIVE_HIGH>,
+                <&gpio1 2  GPIO_ACTIVE_HIGH>,
+                <&gpio1 17 GPIO_ACTIVE_HIGH>,
+                <&gpio1 20 GPIO_ACTIVE_HIGH>,
+                <&gpio1 22 GPIO_ACTIVE_HIGH>,
+                <&gpio0 6  GPIO_ACTIVE_HIGH>;
 };

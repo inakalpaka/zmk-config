@@ -1,20 +1,16 @@
 // boards/shields/corne_left.overlay
+#include "corne.dtsi"
 
 &kscan0 {
-    rows = <3>;
-    columns = <7>;
+    row-gpios = <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 
-    // FILAS (Rows): Intercambio de Puertos (P0 -> P1, P1 -> P0)
-    row-gpios = <&gpio 1 10 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F0 (Antes 0 10)
-                <&gpio 1 11 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>, // F1 (Antes 0 11)
-                <&gpio 0 4 (GPIO_PULL_DOWN | GPIO_ACTIVE_HIGH)>;  // F2 (Antes 1 4)
-
-    // COLUMNAS (Cols): Intercambio de Puertos y Mantenemos la Rotación
-    col-gpios = <&gpio 1 29 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C0 (Antes 0 29)
-                <&gpio 1 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C1 (Antes 0 2)
-                <&gpio 1 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C2 (Antes 0 17)
-                <&gpio 1 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C3 (Antes 0 20)
-                <&gpio 1 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>, // C4 (Antes 0 22)
-                <&gpio 0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,  // C5 (Antes 1 6)
-                <&gpio 1 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;  // C6 (Antes 0 9)
+    col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,
+                <&gpio0 20 GPIO_ACTIVE_HIGH>,
+                <&gpio0 22 GPIO_ACTIVE_HIGH>,
+                <&gpio0 31 GPIO_ACTIVE_HIGH>,
+                <&gpio0 29 GPIO_ACTIVE_HIGH>,
+                <&gpio0 2  GPIO_ACTIVE_HIGH>;
 };
