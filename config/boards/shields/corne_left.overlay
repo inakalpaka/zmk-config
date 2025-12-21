@@ -2,6 +2,7 @@
 #include "corne.dtsi"
 
 &kscan0 {
+    status = "okay";
     row-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
                 <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
                 <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
