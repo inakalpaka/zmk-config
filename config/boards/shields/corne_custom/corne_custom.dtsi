@@ -29,7 +29,7 @@
     };
 
     /* Definición del layout para ZMK Studio */
-    main_layout: main_layout {
+    default_layout: default_layout {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
