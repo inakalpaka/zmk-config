@@ -1,8 +1,8 @@
 include:
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_custom_left
     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
     artifact-name: corne_custom_left_central
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_custom_right
     artifact-name: corne_custom_right_peripheral
