@@ -1,5 +1,5 @@
-// boards/shields/corne_left.overlay
-#include "corne.dtsi"
+// boards/shields/corne_custom_left.overlay
+#include "corne_custom.dtsi"
 
 &kscan0 {
     status = "okay";

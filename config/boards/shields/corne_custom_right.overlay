@@ -1,5 +1,5 @@
-// boards/shields/corne_right.overlay
-#include "corne.dtsi"
+// boards/shields/corne_custom_right.overlay
+#include "corne_custom.dtsi"
 
 &default_transform {
     col-offset = <6>;  

@@ -1,13 +1,9 @@
-if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT
+if SHIELD_CORNE_CUSTOM_LEFT || SHIELD_CORNE_CUSTOM_RIGHT
 
 config ZMK_KEYBOARD_NAME
-    default "Corne"
+    default "Corne Custom"
 
 config ZMK_SPLIT
-    default y
-
-# Esto ayuda a que el USB Serial se active más fácilmente
-config USB_DEVICE_STACK
     default y
 
 endif
