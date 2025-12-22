@@ -4,7 +4,7 @@
 / {
     /* ESTO ES LO QUE FALTA */
     chosen {
-        zmk,physical-layout = &default_layout;
+        zmk,physical-layout = &main_layout;
     };
 
     keymap {

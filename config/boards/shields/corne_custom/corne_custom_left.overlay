@@ -29,6 +29,6 @@
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
         /* Apuntamos al layout que acabamos de definir arriba */
-        zmk,physical-layout = &left_layout;
+        zmk,physical-layout = &main_layout;
     };
 };
