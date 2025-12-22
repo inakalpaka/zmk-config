@@ -15,3 +15,15 @@
                 <&gpio0 20 GPIO_ACTIVE_HIGH>,
                 <&gpio0 22  GPIO_ACTIVE_HIGH>;
 };
+/ {
+    chosen {
+        zephyr,console = &cdc_acm_uart;
+    };
+};
+
+&usbd {
+    status = "okay";
+    cdc_acm_uart: cdc_acm_uart {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
