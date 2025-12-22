@@ -1,5 +1,6 @@
 #include "corne_custom.dtsi"
 
+/* Forzamos el mapeo de pines */
 &kscan0 {
     status = "okay";
     row-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
@@ -16,10 +17,18 @@
 };
 
 / {
+    /* Definimos el layout aquí mismo para que el compilador lo vea sí o sí */
+    left_layout: left_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+    };
+
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        /* Esto es lo que soluciona el error de compilación */
-        zmk,physical-layout = &default_layout;
+        /* Apuntamos al layout que acabamos de definir arriba */
+        zmk,physical-layout = &left_layout;
     };
 };
