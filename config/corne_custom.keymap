@@ -64,7 +64,7 @@
          */
         raise_layer {
             bindings = <
-&trans &kp SQT   &kp GRAVE &kp DQT   &trans    &trans       &kp AMPS  &kp BSLH  &kp LBKT  &kp RBKT  &kp AMPS     &trans
+&trans &kp SQT   &kp GRAVE &kp DQT   &kp TILDE    &trans       &kp AMPS  &kp BSLH  &kp LBKT  &kp RBKT  &kp DLLR     &trans
 &trans &trans    &trans    &trans    &trans    &trans       &kp PIPE  &kp SLASH &kp LPAR  &kp RPAR  &kp QUESTION &trans
 &trans &trans    &trans    &trans    &trans    &trans       &kp HASH  &kp AT    &kp LBRC  &kp RBRC  &trans       &trans
                            &trans    &trans    &trans       &trans    &trans    &trans
