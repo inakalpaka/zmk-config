@@ -5,35 +5,46 @@
 
 / {
     behaviors {
-        /* Tap Dance para TAB/ESC */
+        /* * Tap Dance:
+         * 1 toque rápido = TAB
+         * 2 toques rápidos = ESC
+         */
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp TAB>, <&kp ESC>;
         };
-
-        /* Tap Dance para la ñ: 1 toque = ; | 2 toques = ñ */
-        td_n: tap_dance_n {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp SEMI>, <&kp RA(N)>;
-        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        /* -----------------------------------------------------------------------------------------
+         * CAPA 0: BASE (Escritura normal)
+         * -----------------------------------------------------------------------------------------
+         * | TAB/ESC |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP |
+         * | LCTRL   |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | ENT  |
+         * | LSHFT   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  | DEL | RSHFT|
+         *                       | ALT | SPC | L2  |   | L3  | L1  | GUI |
+         */
         default_layer {
             bindings = <
-&td0      &kp Q &kp W &kp E    &kp R     &kp T     &kp Y &kp U  &kp I      &kp O   &kp P    &kp BSPC
-&kp LCTRL &kp A &kp S &kp D    &kp F     &kp G     &kp H &kp J  &kp K      &kp L   &td_n    &kp RET
-&kp LSHFT &kp Z &kp X &kp C    &kp V     &kp B     &kp N &kp M  &kp COMMA  &kp DOT &kp DEL  &kp RSHFT
+&td0      &kp Q &kp W &kp E    &kp R     &kp T     &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+&kp LCTRL &kp A &kp S &kp D    &kp F     &kp G     &kp H &kp J  &kp K     &kp L   &kp SEMI &kp RET
+&kp LSHFT &kp Z &kp X &kp C    &kp V     &kp B     &kp N &kp M  &kp COMMA &kp DOT &kp DEL  &kp RSHFT
                       &kp LALT &kp SPACE &mo 2     &mo 3 &mo 1  &kp LGUI
             >;
         };
 
+        /* -----------------------------------------------------------------------------------------
+         * CAPA 1: LOWER (Números, Símbolos matemáticos y Navegación)
+         * -----------------------------------------------------------------------------------------
+         * Izquierda:                                     Derecha:
+         * 1   2   3   4   5                           6   7    8    9    0
+         * +   -   * /   =                             -- LFT   UP  RGT  --
+         * _   !   %   ^                               -- HOM  DWN  END  --
+         */
         lower_layer {
             bindings = <
 &trans &kp N1    &kp N2    &kp N3    &kp N4    &kp N5       &kp N6   &kp N7   &kp N8   &kp N9    &kp N0 &trans
@@ -43,6 +54,14 @@
             >;
         };
 
+        /* -----------------------------------------------------------------------------------------
+         * CAPA 2: RAISE (Símbolos avanzados de programación)
+         * -----------------------------------------------------------------------------------------
+         * Lado Izquierdo:                             Lado Derecho:
+         * '   `   "                                   &   \   [   ]   $
+         *                                             |   /   (   )   ?
+         *                                             #   @   {   }
+         */
         raise_layer {
             bindings = <
 &trans &kp SQT   &kp GRAVE &kp DQT   &kp TILDE &trans       &kp AMPS  &kp BSLH  &kp LBKT  &kp RBKT  &kp DLLR     &trans
@@ -52,6 +71,13 @@
             >;
         };
 
+        /* -----------------------------------------------------------------------------------------
+         * CAPA 3: SYSTEM (Teclas de Función, Bluetooth y Hardware)
+         * -----------------------------------------------------------------------------------------
+         * F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12
+         * BT-Clear BL-1 BL-2 BL-3 BL-4 BLE USB
+         * Reset y Bootloader (Modo flasheo)
+         */
         system_layer {
             bindings = <
 &kp F1     &kp F2       &kp F3       &kp F4       &kp F5       &kp F6         &kp F7       &kp F8       &kp F9       &kp F10      &kp F11 &kp F12
